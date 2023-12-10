@@ -73,7 +73,7 @@ export class Terminal {
      */
   async initialize() {
     this.running = true;
-    Deno.setRaw(Deno.stdin.rid, true);
+    Deno.stdint.setRaw(true);
     await writeToStream(
       this.outputStream,
       EscapeSequence.SMCUP +
@@ -110,7 +110,7 @@ export class Terminal {
      */
   async close() {
     this.running = false;
-    Deno.setRaw(0, false);
+    Deno.stdin.setRaw(false);
     await writeToStream(
       this.outputStream,
       EscapeSequence.DISABLE_MOUSE_REPORT +
