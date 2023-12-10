@@ -73,7 +73,7 @@ export class Terminal {
      */
   async initialize() {
     this.running = true;
-    Deno.stdint.setRaw(true);
+    Deno.stdin.setRaw(true);
     await writeToStream(
       this.outputStream,
       EscapeSequence.SMCUP +
